@@ -42,6 +42,12 @@ jobs:
           arch: x64
           sdk: 10.0.19041.0
 
+      - name: Install Linux deps
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt update
+          sudo apt install -y libwayland-dev
+
       - name: Checkout self
         uses: actions/checkout@v6
 
@@ -62,6 +68,8 @@ jobs:
         shell: bash
         working-directory: ${{ env.PROJECT_PATH }}/wezterm-gui
         run: |
+          sudo apt update
+          sudo apt install -y libwayland-dev
           rm -f Cargo.lock
           cargo update
           cargo b -r
