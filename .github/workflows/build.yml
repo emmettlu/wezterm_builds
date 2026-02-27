@@ -7,10 +7,10 @@ on:
 jobs:
   build:
     env:
-      PROJECT_REPOSITORY: watchexec/watchexec
+      PROJECT_REPOSITORY: wezterm/wezterm
       PROJECT_VERSION: v2.3.2
-      PROJECT_PATH: watchexec
-      PROJECT_BIN: watchexec
+      PROJECT_PATH: wezterm
+      PROJECT_BIN: wezterm
     strategy:
       matrix:
         os: [ubuntu-24.04, windows-2022]
@@ -49,7 +49,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: ${{ env.PROJECT_REPOSITORY }}
-          ref: refs/tags/${{ env.PROJECT_VERSION }}
           path: ${{ env.PROJECT_PATH }}
 
       - name: Copy config file
@@ -61,7 +60,7 @@ jobs:
 
       - name: Build
         shell: bash
-        working-directory: ${{ env.PROJECT_PATH }}
+        working-directory: ${{ env.PROJECT_PATH }}/wezterm-gui
         run: |
           rm -f Cargo.lock
           cargo update
