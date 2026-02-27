@@ -68,8 +68,6 @@ jobs:
         shell: bash
         working-directory: ${{ env.PROJECT_PATH }}/wezterm-gui
         run: |
-          sudo apt update
-          sudo apt install -y libwayland-dev
           rm -f Cargo.lock
           cargo update
           cargo b -r
