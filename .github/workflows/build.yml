@@ -68,7 +68,7 @@ jobs:
         shell: bash
         working-directory: ${{ env.PROJECT_PATH }}/wezterm-gui
         run: |
-          rm -f Cargo.lock
+          rm -f ../Cargo.lock
           cargo update
           cargo b -r
 
